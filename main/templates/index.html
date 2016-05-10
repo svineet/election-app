@@ -2,13 +2,102 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Elections are shit</title>
+    <title>Elections</title>
+    <style type="text/css">
+    *{
+        font-family: 'Raleway', sans-serif;
+    }
+    body{
+        padding: 10px;
+        color: #FAFAFA;
+        background-color: #4A148C;
+    }
+
+    .header{
+        text-align: center;
+    }
+
+    .container{
+        position: absolute;
+        padding: 10px;
+        width: 50vw;
+        height: auto;
+        background-color: #E91E63;
+        box-shadow: 1px 1px 1px 0 black;
+        left: 50vh;
+        margin: 0 auto;
+    }
+
+    .container .spl_block .col_1{
+        float:left;
+    }
+
+    .container .spl_block .col_2{}
+
+    .container .aspl_block .col_1{
+        float:left;
+    }
+    </style>
 </head>
 <body>
-    <h1>and all that we could do with this emotion</h1>
-    I feel it
-    {% for candy in candidates %}
-        <h1>{{ candy.name }}</h1>
-    {% endfor %}
+    <div class="header">
+        <h1>Elections</h1>
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="container">
+            <p>
+                <label for="{{ form.name.id_for_label }}">Name : </label>
+                {{ form.name }}
+            </p>
+            <div class="spl_block">
+                <table class="col_1">
+                    {% for data in form.spl_candidates.field.queryset %}
+                    <tr>
+                        <td>
+                            {{ data.name }}
+                        </td>
+                        <td>
+                            {{ data.description }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <table class="col_2">
+                    {% for radio in form.spl_candidates %}
+                        <tr>
+                            <td>
+                                {{ radio.tag }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="aspl_block">
+                <table class="col_1">
+                    {% for data in form.aspl_candidates.field.queryset %}
+                    <tr>
+                        <td>
+                            {{ data.name }}
+                        </td>
+                        <td>
+                            {{ data.description }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <table class="col_2">
+                    {% for radio in form.aspl_candidates %}
+                        <tr>
+                            <td>
+                                {{ radio.tag }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
 </body>
 </html>
