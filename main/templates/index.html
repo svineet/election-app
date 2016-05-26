@@ -8,12 +8,12 @@
     <style type="text/css">
     body{
         padding: 10px;
-        background-color: teal;
+        background-color: #FAFAFA;
     }
 
     .header{
         text-align: center;
-        color: #FAFAFA;
+        color: black;
     }
     </style>
 </head>
@@ -21,79 +21,81 @@
     <div class="header">
         <h1>Elections</h1>
     </div>
-    <form method="POST" class="ui form">
-        {% csrf_token %}
-        {{ form.errors }}
-        <div class="ui segment">
-            <div class="field">
-                <div class="ui labeled input">
-                    <div class="ui label">Name</div>
-                    <input id="id_name" maxlength="100" name="name" type="text"/>
+    <div class="ui inverted blue segment">
+        <form method="POST" class="ui form">
+            {% csrf_token %}
+            {{ form.errors }}
+            <div class="ui segment">
+                <div class="field">
+                    <div class="ui labeled input">
+                        <div class="ui label">Name</div>
+                        <input id="id_name" maxlength="100" name="name" type="text"/>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <h3 class="ui horizontal divider header">
-                  School Pupil Leader
-                </h3>
-                <table class="ui celled striped table">
-                    <thead>
+                <div>
+                    <h3 class="ui horizontal divider header">
+                      School Pupil Leader
+                    </h3>
+                    <table class="ui celled striped table">
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                        {% for data in form.spl_candidates.field.queryset %}
                         <tr>
-                            <th>Symbol</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Select</th>
+                            <td>{{ data.photo }}</td>
+                            <td>
+                                {{ data.name }}
+                            </td>
+                            <td>
+                                {{ data.description }}
+                            </td>
+                            <td>
+                                 <input type="radio" class="ui radio checkbox" for="id_spl_candidates_{{ forloop.counter0 }}" name="spl_candidates" value="{{ data.id }}">
+                            </td>
                         </tr>
-                    </thead>
-                    {% for data in form.spl_candidates.field.queryset %}
-                    <tr>
-                        <td>{{ data.photo }}</td>
-                        <td>
-                            {{ data.name }}
-                        </td>
-                        <td>
-                            {{ data.description }}
-                        </td>
-                        <td>
-                             <input type="radio" class="ui radio checkbox" for="id_spl_candidates_{{ forloop.counter0 }}" name="spl_candidates" value="{{ data.id }}">
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
-            <br>
-            <br>
-            <div>
-                <h3 class="ui horizontal divider header">
-                  Assistant School Pupil Leader
-                </h3>
-                <table class="ui celled striped table">
-                    <thead>
+                        {% endfor %}
+                    </table>
+                </div>
+                <br>
+                <br>
+                <div>
+                    <h3 class="ui horizontal divider header">
+                      Assistant School Pupil Leader
+                    </h3>
+                    <table class="ui celled striped table">
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                        {% for data in form.aspl_candidates.field.queryset %}
                         <tr>
-                            <th>Symbol</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Select</th>
+                            <td>{{ data.photo }}</td>
+                            <td>
+                                {{ data.name }}
+                            </td>
+                            <td>
+                                {{ data.description }}
+                            </td>
+                            <td>
+                                 <input type="radio" class="ui radio checkbox" for="id_aspl_candidates_{{ forloop.counter0 }}"name="aspl_candidates" value="{{ data.id }}">
+                            </td>
                         </tr>
-                    </thead>
-                    {% for data in form.aspl_candidates.field.queryset %}
-                    <tr>
-                        <td>{{ data.photo }}</td>
-                        <td>
-                            {{ data.name }}
-                        </td>
-                        <td>
-                            {{ data.description }}
-                        </td>
-                        <td>
-                             <input type="radio" class="ui radio checkbox" for="id_aspl_candidates_{{ forloop.counter0 }}"name="aspl_candidates" value="{{ data.id }}">
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </table>
+                        {% endfor %}
+                    </table>
+                </div>
+                <hr class="ui horizontal divider">
+                <center><input class="ui blue huge button" type="submit" value="Submit" /></center>
             </div>
-            <hr class="ui horizontal divider">
-            <center><input class="ui blue huge button" type="submit" value="Submit" /></center>
-        </div>
-    </form>
+        </form>
+    </div>
 </body>
 </html>

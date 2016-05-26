@@ -1,9 +1,26 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Aftermath</title>
+    <title>Elections</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'semantic.min.css' %}">
 </head>
+<style type="text/css">
+    .cont{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transform: -webkit-translate(-50%, -50%);
+        transform: -ms-translate(-50%, -50%);
+        text-align: center;
+        width: 20vw;
+        height: 20vh;
+    }
+</style>
 <body>
-    <p>Voting sucks !!! Heil Hitler</p>
+    <div class="ui blue inverted segment cont">
+        <h1 class="ui header">Thankyou <br>for<br> voting</h1>
+    </div>
 </body>
 </html>
