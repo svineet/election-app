@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Elections</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'semantic.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/semantic.min.css' %}">
     <style type="text/css">
     body{
         padding: 10px;
@@ -24,19 +24,19 @@
     <div class="ui inverted blue segment">
         <form method="POST" class="ui form">
             {% csrf_token %}
-            {{ form.errors }}
             <div class="ui segment">
                 <div class="field">
                     <div class="ui labeled input">
                         <div class="ui label">Name</div>
-                        <input id="id_name" maxlength="100" name="name" type="text"/>
+                        <input id="id_name" maxlength="100" name="name" type="text" placeholder="" />
+                        {{ form.name.errors }}
                     </div>
                 </div>
                 <div>
                     <h3 class="ui horizontal divider header">
                       School Pupil Leader
                     </h3>
-                    <table class="ui celled striped table">
+                    <table class="ui fixed very padded celled striped table">
                         <thead>
                             <tr>
                                 <th>Symbol</th>
@@ -67,7 +67,7 @@
                     <h3 class="ui horizontal divider header">
                       Assistant School Pupil Leader
                     </h3>
-                    <table class="ui celled striped table">
+                    <table class="ui fixed very padded selctable celled striped table">
                         <thead>
                             <tr>
                                 <th>Symbol</th>

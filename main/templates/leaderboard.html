@@ -1,0 +1,74 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaderboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/semantic.min.css' %}">
+</head>
+<style type="text/css">
+    body{
+        padding: 10px;
+        background-color: #FAFAFA;
+    }
+
+    .header{
+        text-align: center;
+        color: black;
+    }
+</style>
+<body>
+    <div class="header">
+        <h1>Leaderboard</h1>
+    </div>
+    <div class="ui inverted blue segment">
+        <div class="ui segment">
+            <h3 class="ui horizontal divider header">
+                School Pupil Leader
+            </h3>
+            <table class="ui fixed celled table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Votes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for candy in spl_candidates %}
+                        <tr>
+                            {% if forloop.counter == 1%}
+                            <td><div class="ui large yellow ribbon label">{{ candy.name }}</div></td>
+                            {% else %}
+                            <td>{{ candy.name }}</td>
+                            {% endif %}
+                            <td>{{ candy.votes }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <h3 class="ui horizontal divider header">
+                Assistant School Pupil Leader
+            </h3>
+            <table class="ui fixed celled table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Votes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for candy in aspl_candidates %}
+                        <tr>
+                            {% if forloop.counter == 1%}
+                            <td><div class="ui large ribbon label">{{ candy.name }}</div></td>
+                            {% else %}
+                            <td>{{ candy.name }}</td>
+                            {% endif %}
+                            <td>{{ candy.votes }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>            
+        </div>
+    </div>
+</body>
+</html>

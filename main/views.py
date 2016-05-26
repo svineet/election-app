@@ -19,6 +19,13 @@ def index(request):
         print form
     return render(request, 'index.html', {'form':form})
 
-
 def aftermath(request):
     return render(request, 'aftermath.html')
+
+def leaderboard(request):
+    spl_candidates = Candidate.objects.filter(category="SPL").order_by('-votes')
+    aspl_candidates = Candidate.objects.filter(category="ASPL").order_by('-votes')
+    return render(request, 'leaderboard.html', {
+        'spl_candidates':spl_candidates,
+        'aspl_candidates':aspl_candidates,
+    })
