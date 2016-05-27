@@ -9,7 +9,7 @@ class Candidate(models.Model):
     )
     name = models.CharField(max_length=256)
     description = models.TextField()
-    # photo = models.ImageField(upload_to='assets/', default='assets/none.jpg')
+    photo = models.ImageField(upload_to='assets/', default='assets/none.jpg')
     votes = models.IntegerField(default=0)
     category = models.CharField(max_length=4, choices=CANDIDATE_CATEGORIES, default="SPL")
     def __unicode__(self):

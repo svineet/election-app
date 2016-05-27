@@ -16,7 +16,6 @@ def index(request):
             return redirect('aftermath')
     else:
         form = SubmissionForm()
-        print form
     return render(request, 'index.html', {'form':form})
 
 def aftermath(request):

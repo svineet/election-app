@@ -38,7 +38,7 @@
                     </h3>
                     <table class="ui fixed very padded celled striped table">
                         <thead>
-                            <tr>
+                            <tr class="center aligned">
                                 <th>Symbol</th>
                                 <th>Name</th>
                                 <th>Description</th>
@@ -46,8 +46,12 @@
                             </tr>
                         </thead>
                         {% for data in form.spl_candidates.field.queryset %}
-                        <tr>
-                            <td>{{ data.photo }}</td>
+                        <tr class="center aligned">
+                            <td>
+                                <center>
+                                    <img src="{{ data.photo.url }}" class="ui small circular image">
+                                </center>
+                            </td>
                             <td>
                                 {{ data.name }}
                             </td>
@@ -69,7 +73,7 @@
                     </h3>
                     <table class="ui fixed very padded selctable celled striped table">
                         <thead>
-                            <tr>
+                            <tr class="center aligned">
                                 <th>Symbol</th>
                                 <th>Name</th>
                                 <th>Description</th>
@@ -77,8 +81,12 @@
                             </tr>
                         </thead>
                         {% for data in form.aspl_candidates.field.queryset %}
-                        <tr>
-                            <td>{{ data.photo }}</td>
+                        <tr class="center aligned">
+                            <td>
+                                <center>
+                                    <img src="{{ data.photo.url }}" class="ui small circular image">
+                                </center>
+                            </td>
                             <td>
                                 {{ data.name }}
                             </td>
